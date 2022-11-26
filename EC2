@@ -4,9 +4,15 @@ Resources:
     Properties:
       ImageId: ami-0b0dcb5067f052a63
       InstanceType: t2.micro
+      KeyName: aula
 
-  EC2VPC11JU6:
-    Type: 'AWS::EC2::VPC'
-    Properties: 
-      CidrBlock: 10.0.0.0/16
-      EnableDnsSupport: true
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupName: "SecurityGroup"
+      GroupDescription: "Security"
+      SecurityGroupIngress:
+        CidrIp: 0.0.0.0/0
+        FromPort: 22
+        IpProtocol: tcp 
+        ToPort: 22
